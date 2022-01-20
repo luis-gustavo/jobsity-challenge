@@ -8,10 +8,11 @@
 import Foundation
 
 enum Localizable {
+    case tvShows
     
     var localized: String {
         switch self {
-            
+            case .tvShows: return "TV_SHOWS".localize()
         }
     }
 }

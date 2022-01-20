@@ -5,6 +5,7 @@
 //  Created by Luis Gustavo Avelino de Lima Jacinto on 20/01/22.
 //
 
+import Networking
 import UIKit
 
 final class AppCoordinator: Coordinatable {
@@ -19,7 +20,7 @@ final class AppCoordinator: Coordinatable {
     
     // MARK: - Start
     func start() {
-        let viewController = TVShowsViewController()
+        let viewController = TVShowsViewController(provider: TVShowProvider(networking: URLSessionNetworking()))
         self.navigationController.pushViewController(viewController, animated: true)
     }
 }

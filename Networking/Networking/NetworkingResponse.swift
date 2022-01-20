@@ -8,11 +8,11 @@
 import Foundation
 
 public struct NetworkingResponse: Hashable {
-    let data: Data?
-    let status: HTTPStatusCode
-    let request: URLRequest
+    public let data: Data?
+    public let status: HTTPStatusCode
+    public let request: URLRequest
     
-    init(data: Data?, status: HTTPStatusCode, request: URLRequest) {
+    public init(data: Data?, status: HTTPStatusCode, request: URLRequest) {
         self.data = data
         self.status = status
         self.request = request
