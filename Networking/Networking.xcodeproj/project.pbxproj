@@ -7,32 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E59E6CF2799D1830016F13D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59E6CE2799D1830016F13D /* AppDelegate.swift */; };
-		6E59E6D82799D1850016F13D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E59E6D72799D1850016F13D /* Assets.xcassets */; };
-		6E59E6DB2799D1850016F13D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E59E6D92799D1850016F13D /* LaunchScreen.storyboard */; };
+		6E59E6F12799D3260016F13D /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E59E6F02799D3260016F13D /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E59E6FE2799D33F0016F13D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59E6FD2799D33F0016F13D /* HTTPMethod.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		6E59E6FB2799D3270016F13D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E59E6F72799D3260016F13D /* Networking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6E59E6ED2799D3260016F13D;
-			remoteInfo = Networking;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		6E59E6CB2799D1830016F13D /* Jobsity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jobsity.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E59E6CE2799D1830016F13D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6E59E6D72799D1850016F13D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6E59E6DA2799D1850016F13D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6E59E6DC2799D1850016F13D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E59E6F72799D3260016F13D /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
+		6E59E6ED2799D3260016F13D /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E59E6F02799D3260016F13D /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
+		6E59E6FD2799D33F0016F13D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6E59E6C82799D1830016F13D /* Frameworks */ = {
+		6E59E6EA2799D3260016F13D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,86 +28,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E59E6C22799D1830016F13D = {
+		6E59E6E32799D3260016F13D = {
 			isa = PBXGroup;
 			children = (
-				6E59E6CD2799D1830016F13D /* Jobsity */,
-				6E59E6F72799D3260016F13D /* Networking.xcodeproj */,
-				6E59E6CC2799D1830016F13D /* Products */,
+				6E59E6EF2799D3260016F13D /* Networking */,
+				6E59E6EE2799D3260016F13D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		6E59E6CC2799D1830016F13D /* Products */ = {
+		6E59E6EE2799D3260016F13D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6E59E6CB2799D1830016F13D /* Jobsity.app */,
+				6E59E6ED2799D3260016F13D /* Networking.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6E59E6CD2799D1830016F13D /* Jobsity */ = {
+		6E59E6EF2799D3260016F13D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				6E59E6E22799D1920016F13D /* Core */,
+				6E59E6F02799D3260016F13D /* Networking.h */,
+				6E59E6FD2799D33F0016F13D /* HTTPMethod.swift */,
 			);
-			path = Jobsity;
-			sourceTree = "<group>";
-		};
-		6E59E6E22799D1920016F13D /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				6E59E6DC2799D1850016F13D /* Info.plist */,
-				6E59E6D92799D1850016F13D /* LaunchScreen.storyboard */,
-				6E59E6D72799D1850016F13D /* Assets.xcassets */,
-				6E59E6CE2799D1830016F13D /* AppDelegate.swift */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		6E59E6F82799D3260016F13D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6E59E6FC2799D3270016F13D /* Networking.framework */,
-			);
-			name = Products;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		6E59E6E82799D3260016F13D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E59E6F12799D3260016F13D /* Networking.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		6E59E6CA2799D1830016F13D /* Jobsity */ = {
+		6E59E6EC2799D3260016F13D /* Networking */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E59E6DF2799D1850016F13D /* Build configuration list for PBXNativeTarget "Jobsity" */;
+			buildConfigurationList = 6E59E6F42799D3260016F13D /* Build configuration list for PBXNativeTarget "Networking" */;
 			buildPhases = (
-				6E59E6C72799D1830016F13D /* Sources */,
-				6E59E6C82799D1830016F13D /* Frameworks */,
-				6E59E6C92799D1830016F13D /* Resources */,
+				6E59E6E82799D3260016F13D /* Headers */,
+				6E59E6E92799D3260016F13D /* Sources */,
+				6E59E6EA2799D3260016F13D /* Frameworks */,
+				6E59E6EB2799D3260016F13D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Jobsity;
-			productName = Jobsity;
-			productReference = 6E59E6CB2799D1830016F13D /* Jobsity.app */;
-			productType = "com.apple.product-type.application";
+			name = Networking;
+			productName = Networking;
+			productReference = 6E59E6ED2799D3260016F13D /* Networking.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6E59E6C32799D1830016F13D /* Project object */ = {
+		6E59E6E42799D3260016F13D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					6E59E6CA2799D1830016F13D = {
+					6E59E6EC2799D3260016F13D = {
 						CreatedOnToolsVersion = 13.2;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
-			buildConfigurationList = 6E59E6C62799D1830016F13D /* Build configuration list for PBXProject "Jobsity" */;
+			buildConfigurationList = 6E59E6E72799D3260016F13D /* Build configuration list for PBXProject "Networking" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -129,68 +108,39 @@
 				en,
 				Base,
 			);
-			mainGroup = 6E59E6C22799D1830016F13D;
-			productRefGroup = 6E59E6CC2799D1830016F13D /* Products */;
+			mainGroup = 6E59E6E32799D3260016F13D;
+			productRefGroup = 6E59E6EE2799D3260016F13D /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 6E59E6F82799D3260016F13D /* Products */;
-					ProjectRef = 6E59E6F72799D3260016F13D /* Networking.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
-				6E59E6CA2799D1830016F13D /* Jobsity */,
+				6E59E6EC2799D3260016F13D /* Networking */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		6E59E6FC2799D3270016F13D /* Networking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Networking.framework;
-			remoteRef = 6E59E6FB2799D3270016F13D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
-		6E59E6C92799D1830016F13D /* Resources */ = {
+		6E59E6EB2799D3260016F13D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E59E6DB2799D1850016F13D /* LaunchScreen.storyboard in Resources */,
-				6E59E6D82799D1850016F13D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6E59E6C72799D1830016F13D /* Sources */ = {
+		6E59E6E92799D3260016F13D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E59E6CF2799D1830016F13D /* AppDelegate.swift in Sources */,
+				6E59E6FE2799D33F0016F13D /* HTTPMethod.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		6E59E6D92799D1850016F13D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6E59E6DA2799D1850016F13D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		6E59E6DD2799D1850016F13D /* Debug */ = {
+		6E59E6F22799D3260016F13D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -224,6 +174,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -248,10 +199,12 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		6E59E6DE2799D1850016F13D /* Release */ = {
+		6E59E6F32799D3260016F13D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -285,6 +238,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -303,59 +257,64 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		6E59E6E02799D1850016F13D /* Debug */ = {
+		6E59E6F52799D3260016F13D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = A93689JNSR;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Jobsity/Core/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.luisgustavo.Jobsity;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luisgustavo.Networking;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		6E59E6E12799D1850016F13D /* Release */ = {
+		6E59E6F62799D3260016F13D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = A93689JNSR;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Jobsity/Core/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.luisgustavo.Jobsity;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luisgustavo.Networking;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -365,25 +324,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6E59E6C62799D1830016F13D /* Build configuration list for PBXProject "Jobsity" */ = {
+		6E59E6E72799D3260016F13D /* Build configuration list for PBXProject "Networking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E59E6DD2799D1850016F13D /* Debug */,
-				6E59E6DE2799D1850016F13D /* Release */,
+				6E59E6F22799D3260016F13D /* Debug */,
+				6E59E6F32799D3260016F13D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E59E6DF2799D1850016F13D /* Build configuration list for PBXNativeTarget "Jobsity" */ = {
+		6E59E6F42799D3260016F13D /* Build configuration list for PBXNativeTarget "Networking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E59E6E02799D1850016F13D /* Debug */,
-				6E59E6E12799D1850016F13D /* Release */,
+				6E59E6F52799D3260016F13D /* Debug */,
+				6E59E6F62799D3260016F13D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6E59E6C32799D1830016F13D /* Project object */;
+	rootObject = 6E59E6E42799D3260016F13D /* Project object */;
 }
