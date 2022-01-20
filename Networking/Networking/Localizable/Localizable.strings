@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Networking
+
+  Created by Luis Gustavo Avelino de Lima Jacinto on 20/01/22.
+  
+*/
+
+"UNABLE_TO_CREATE_QUERY_PARAMETERS" = "Unable to create query parameters %@ for %@.";
+"NOT_HTTPURL_RESPONSE" = "The response received isn't of type HTTPURLResponse.";
+"UNKNOWN_STATUS_CODE" = "Unknown status code %@.";

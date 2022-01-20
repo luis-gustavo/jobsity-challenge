@@ -10,6 +10,12 @@
 		6E59E6CF2799D1830016F13D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59E6CE2799D1830016F13D /* AppDelegate.swift */; };
 		6E59E6D82799D1850016F13D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E59E6D72799D1850016F13D /* Assets.xcassets */; };
 		6E59E6DB2799D1850016F13D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E59E6D92799D1850016F13D /* LaunchScreen.storyboard */; };
+		6E59E7132799EE490016F13D /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E59E6FC2799D3270016F13D /* Networking.framework */; };
+		6E59E7182799EEA50016F13D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E59E7172799EEA50016F13D /* Localizable.strings */; };
+		6E59E71A2799EEAD0016F13D /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59E7192799EEAD0016F13D /* Localizable.swift */; };
+		6E59E71D2799EF4D0016F13D /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59E71C2799EF4D0016F13D /* TVShow.swift */; };
+		6E59E7202799F0A00016F13D /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59E71F2799F0A00016F13D /* APIKeys.swift */; };
+		6E59E7222799F1C70016F13D /* TVShowEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59E7212799F1C70016F13D /* TVShowEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +35,11 @@
 		6E59E6DA2799D1850016F13D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E59E6DC2799D1850016F13D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E59E6F72799D3260016F13D /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
+		6E59E7172799EEA50016F13D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		6E59E7192799EEAD0016F13D /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		6E59E71C2799EF4D0016F13D /* TVShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
+		6E59E71F2799F0A00016F13D /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		6E59E7212799F1C70016F13D /* TVShowEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E59E7132799EE490016F13D /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +60,7 @@
 				6E59E6CD2799D1830016F13D /* Jobsity */,
 				6E59E6F72799D3260016F13D /* Networking.xcodeproj */,
 				6E59E6CC2799D1830016F13D /* Products */,
+				6E59E7122799EE490016F13D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				6E59E6E22799D1920016F13D /* Core */,
+				6E59E7162799EE970016F13D /* Localizable */,
+				6E59E71B2799EF440016F13D /* Model */,
+				6E59E71E2799F0870016F13D /* Network */,
 			);
 			path = Jobsity;
 			sourceTree = "<group>";
@@ -84,6 +100,39 @@
 				6E59E6FC2799D3270016F13D /* Networking.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6E59E7122799EE490016F13D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E59E7162799EE970016F13D /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				6E59E7172799EEA50016F13D /* Localizable.strings */,
+				6E59E7192799EEAD0016F13D /* Localizable.swift */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		6E59E71B2799EF440016F13D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6E59E71C2799EF4D0016F13D /* TVShow.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6E59E71E2799F0870016F13D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				6E59E71F2799F0A00016F13D /* APIKeys.swift */,
+				6E59E7212799F1C70016F13D /* TVShowEndpoint.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E59E6DB2799D1850016F13D /* LaunchScreen.storyboard in Resources */,
+				6E59E7182799EEA50016F13D /* Localizable.strings in Resources */,
 				6E59E6D82799D1850016F13D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,7 +222,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E59E71A2799EEAD0016F13D /* Localizable.swift in Sources */,
 				6E59E6CF2799D1830016F13D /* AppDelegate.swift in Sources */,
+				6E59E7202799F0A00016F13D /* APIKeys.swift in Sources */,
+				6E59E71D2799EF4D0016F13D /* TVShow.swift in Sources */,
+				6E59E7222799F1C70016F13D /* TVShowEndpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
