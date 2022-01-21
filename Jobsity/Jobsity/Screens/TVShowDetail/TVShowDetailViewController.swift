@@ -106,11 +106,11 @@ private extension TVShowDetailViewController {
 // MARK: - Factory
 fileprivate struct TVShowDetailViewControllerFactory {
     static func createViewModel(model: TVShow) -> TVShowDetailView.Model {
-        return .init(poster: model.image.original,
+        return .init(poster: model.image?.original ?? "",
                      days: model.schedule.days,
                      time: model.schedule.time,
                      genres: model.genres,
-                     summary: model.summary)
+                     summary: model.summary ?? "")
     }
     
     static func createViewEpisodes(episodes: [Episode]) -> [TVShowDetailView.Episode] {
@@ -118,6 +118,6 @@ fileprivate struct TVShowDetailViewControllerFactory {
                                     season: $0.season,
                                     number: $0.number,
                                     name: $0.name,
-                                    image: $0.image.medium) })
+                                    image: $0.image?.medium ?? "") })
     }
 }

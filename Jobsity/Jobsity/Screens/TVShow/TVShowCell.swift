@@ -78,7 +78,9 @@ extension TVShowCell: ViewCodable {
         starButton.setupConstraints { view in
             [
                 view.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
+                view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+                view.heightAnchor.constraint(equalToConstant: 22),
+                view.widthAnchor.constraint(equalToConstant: 22)
             ]
         }
     }

@@ -20,8 +20,9 @@ final class AppCoordinator: Coordinatable {
     
     // MARK: - Start
     func start() {
-        let viewController = TVShowsViewController(tvShowProvider: TVShowProvider(networking: URLSessionNetworking()),
-                                                   favoritesProvider: FavoritesProvider.shared)
+        let viewController = TVShowsViewController(tvShowProvider: TVShowProvider(networking: URLSessionNetworking.shared),
+                                                   favoritesProvider: FavoritesProvider.shared,
+                                                   peopleProvider: PeopleProvider(networking: URLSessionNetworking.shared))
         viewController.delegate = self
         self.navigationController.pushViewController(viewController, animated: true)
     }
@@ -29,6 +30,14 @@ final class AppCoordinator: Coordinatable {
 
 // MARK: - TVShowsViewControllerDelegate
 extension AppCoordinator: TVShowsViewControllerDelegate {
+    func didSelectPerson(_ sender: TVShowsViewController, person: Person) {
+        let viewController = PersonDetailViewController(person: person,
+                                                        tvShowProvider: TVShowProvider(networking: URLSessionNetworking.shared),
+                                                        favoritesProvider: FavoritesProvider.shared)
+        viewController.delegate = self
+        self.navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func didSelectFavorites() {
         let viewController = FavoritesViewController(favoritesProvider: FavoritesProvider.shared)
         viewController.delegate = self
@@ -37,7 +46,7 @@ extension AppCoordinator: TVShowsViewControllerDelegate {
     
     func didSelectTVShow(_ sender: TVShowsViewController, tvShow: TVShow, isFavorite: Bool) {
         let viewController = TVShowDetailViewController(tvShow: tvShow,
-                                                        episodeProvider: EpisodeProvider(networking: URLSessionNetworking()),
+                                                        episodeProvider: EpisodeProvider(networking: URLSessionNetworking.shared),
                                                         favoritesProvider: FavoritesProvider.shared,
                                                         isFavorite: isFavorite)
         viewController.delegate = self
@@ -57,7 +66,19 @@ extension AppCoordinator: TVShowDetailViewControllerDelegate {
 extension AppCoordinator: FavoritesViewControllerDelegate {
     func didSelectTVShow(_ sender: FavoritesViewController, tvShow: TVShow, isFavorite: Bool) {
         let viewController = TVShowDetailViewController(tvShow: tvShow,
-                                                        episodeProvider: EpisodeProvider(networking: URLSessionNetworking()),
+                                                        episodeProvider: EpisodeProvider(networking: URLSessionNetworking.shared),
+                                                        favoritesProvider: FavoritesProvider.shared,
+                                                        isFavorite: isFavorite)
+        viewController.delegate = self
+        self.navigationController.pushViewController(viewController, animated: true)
+    }
+}
+
+// MARK: - PersonDetailViewControllerDelegate
+extension AppCoordinator: PersonDetailViewControllerDelegate {
+    func didSelectTVShow(_ sender: PersonDetailViewController, tvShow: TVShow, isFavorite: Bool) {
+        let viewController = TVShowDetailViewController(tvShow: tvShow,
+                                                        episodeProvider: EpisodeProvider(networking: URLSessionNetworking.shared),
                                                         favoritesProvider: FavoritesProvider.shared,
                                                         isFavorite: isFavorite)
         viewController.delegate = self

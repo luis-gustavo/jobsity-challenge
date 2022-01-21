@@ -8,8 +8,12 @@
 import Foundation
 
 public struct URLSessionNetworking: Networking {
+
+    // MARK: - Properties
+    public static let shared = URLSessionNetworking()
     
-    public init() { } 
+    // MARK: - Init
+    private init() { }
     
     public func request(endPoint: EndPoint, _ completion: @escaping (Result<NetworkingResponse, NetworkingError>) -> Void) {
         
@@ -18,7 +22,7 @@ public struct URLSessionNetworking: Networking {
             return
         }
         
-        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+         let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(.unmapped(error)))
                 return

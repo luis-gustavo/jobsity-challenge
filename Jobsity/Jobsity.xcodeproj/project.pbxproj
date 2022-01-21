@@ -49,6 +49,15 @@
 		6EDA00D4279ADF9700F2500C /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA00D3279ADF9600F2500C /* FavoritesView.swift */; };
 		6EDA00D6279AE00800F2500C /* TVShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA00D5279AE00800F2500C /* TVShowViewModel.swift */; };
 		6EDA00D8279AE21800F2500C /* TVShowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA00D7279AE21800F2500C /* TVShowFactory.swift */; };
+		6EFC2DB2279B127F0057FB93 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFC2DB1279B127F0057FB93 /* Person.swift */; };
+		6EFC2DB5279B17830057FB93 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFC2DB4279B17830057FB93 /* PersonCell.swift */; };
+		6EFC2DB9279B1B250057FB93 /* PeopleProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFC2DB8279B1B250057FB93 /* PeopleProviderProtocol.swift */; };
+		6EFC2DBB279B1B6F0057FB93 /* PeopleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFC2DBA279B1B6F0057FB93 /* PeopleProvider.swift */; };
+		6EFC2DBC279B1CED0057FB93 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E251FE8279A2AB7005CB825 /* Networking.framework */; };
+		6EFC2DC0279B35B60057FB93 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFC2DBF279B35B60057FB93 /* PersonViewModel.swift */; };
+		6EFC2DC2279B36950057FB93 /* PersonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFC2DC1279B36950057FB93 /* PersonFactory.swift */; };
+		6EFC2DC7279B4A460057FB93 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFC2DC6279B4A460057FB93 /* PersonDetailView.swift */; };
+		6EFC2DCA279B4A4E0057FB93 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFC2DC9279B4A4E0057FB93 /* PersonDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +116,14 @@
 		6EDA00D3279ADF9600F2500C /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		6EDA00D5279AE00800F2500C /* TVShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowViewModel.swift; sourceTree = "<group>"; };
 		6EDA00D7279AE21800F2500C /* TVShowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowFactory.swift; sourceTree = "<group>"; };
+		6EFC2DB1279B127F0057FB93 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		6EFC2DB4279B17830057FB93 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		6EFC2DB8279B1B250057FB93 /* PeopleProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleProviderProtocol.swift; sourceTree = "<group>"; };
+		6EFC2DBA279B1B6F0057FB93 /* PeopleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleProvider.swift; sourceTree = "<group>"; };
+		6EFC2DBF279B35B60057FB93 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
+		6EFC2DC1279B36950057FB93 /* PersonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonFactory.swift; sourceTree = "<group>"; };
+		6EFC2DC6279B4A460057FB93 /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
+		6EFC2DC9279B4A4E0057FB93 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EFC2DBC279B1CED0057FB93 /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +224,7 @@
 				6E59E71C2799EF4D0016F13D /* TVShow.swift */,
 				6E251FE9279A2D3E005CB825 /* Episode.swift */,
 				6E251FEB279A2D90005CB825 /* Image.swift */,
+				6EFC2DB1279B127F0057FB93 /* Person.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,6 +274,7 @@
 		6E59E7362799F4CE0016F13D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				6EFC2DB6279B17B00057FB93 /* PersonDetail */,
 				6EDA00D0279ADF7000F2500C /* Favorites */,
 				6EDA00C4279ACE8700F2500C /* EpisodeDetail */,
 				6E251FEF279A3105005CB825 /* TVShowDetail */,
@@ -278,6 +298,7 @@
 		6E59E7442799FC140016F13D /* Provider */ = {
 			isa = PBXGroup;
 			children = (
+				6EFC2DB7279B1B0C0057FB93 /* Person */,
 				6EDA00CB279AD4EF00F2500C /* Favorites */,
 				6EDA00CA279AD4E500F2500C /* Episode */,
 				6EDA00C9279AD4DE00F2500C /* TVShow */,
@@ -337,6 +358,27 @@
 				6EDA00D3279ADF9600F2500C /* FavoritesView.swift */,
 			);
 			path = Favorites;
+			sourceTree = "<group>";
+		};
+		6EFC2DB6279B17B00057FB93 /* PersonDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6EFC2DB4279B17830057FB93 /* PersonCell.swift */,
+				6EFC2DBF279B35B60057FB93 /* PersonViewModel.swift */,
+				6EFC2DC1279B36950057FB93 /* PersonFactory.swift */,
+				6EFC2DC6279B4A460057FB93 /* PersonDetailView.swift */,
+				6EFC2DC9279B4A4E0057FB93 /* PersonDetailViewController.swift */,
+			);
+			path = PersonDetail;
+			sourceTree = "<group>";
+		};
+		6EFC2DB7279B1B0C0057FB93 /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				6EFC2DB8279B1B250057FB93 /* PeopleProviderProtocol.swift */,
+				6EFC2DBA279B1B6F0057FB93 /* PeopleProvider.swift */,
+			);
+			path = Person;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,13 +468,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EFC2DCA279B4A4E0057FB93 /* PersonDetailViewController.swift in Sources */,
 				6E59E71A2799EEAD0016F13D /* Localizable.swift in Sources */,
 				6E251FEA279A2D3E005CB825 /* Episode.swift in Sources */,
 				6E59E6CF2799D1830016F13D /* AppDelegate.swift in Sources */,
+				6EFC2DC0279B35B60057FB93 /* PersonViewModel.swift in Sources */,
 				6E59E7352799F4090016F13D /* AppCoordinator.swift in Sources */,
 				6E59E72E2799F3BE0016F13D /* UITableViewCell+identifier.swift in Sources */,
 				6EDA00C6279ACEC500F2500C /* EpisodeDetailViewController.swift in Sources */,
 				6E59E7202799F0A00016F13D /* APIKeys.swift in Sources */,
+				6EFC2DBB279B1B6F0057FB93 /* PeopleProvider.swift in Sources */,
 				6EDA00C2279AC1A100F2500C /* NSMutableAttributedString+Extension.swift in Sources */,
 				6E59E73E2799F4FF0016F13D /* TVShowsViewController.swift in Sources */,
 				6E59E7422799F6BC0016F13D /* TVShowCell.swift in Sources */,
@@ -445,6 +490,8 @@
 				6E59E74D279A00670016F13D /* ImageCache.swift in Sources */,
 				6E59E7402799F50B0016F13D /* TVShowsView.swift in Sources */,
 				6E59E754279A04A30016F13D /* UIColor+StaticColors.swift in Sources */,
+				6EFC2DB9279B1B250057FB93 /* PeopleProviderProtocol.swift in Sources */,
+				6EFC2DB5279B17830057FB93 /* PersonCell.swift in Sources */,
 				6E59E7482799FC360016F13D /* TVShowProviderProtocol.swift in Sources */,
 				6EDA00D8279AE21800F2500C /* TVShowFactory.swift in Sources */,
 				6E59E7302799F3D00016F13D /* Coordinatable.swift in Sources */,
@@ -456,9 +503,12 @@
 				6E251FF7279A3A8E005CB825 /* EpisodeProviderProtocol.swift in Sources */,
 				6EDA00D6279AE00800F2500C /* TVShowViewModel.swift in Sources */,
 				6E251FF3279A3120005CB825 /* TVShowDetailView.swift in Sources */,
+				6EFC2DC7279B4A460057FB93 /* PersonDetailView.swift in Sources */,
+				6EFC2DB2279B127F0057FB93 /* Person.swift in Sources */,
 				6EDA00CF279AD5B000F2500C /* FavoritesProvider.swift in Sources */,
 				6E59E72C2799F3BE0016F13D /* UIStackView+addArrangedSubviews.swift in Sources */,
 				6EDA00D4279ADF9700F2500C /* FavoritesView.swift in Sources */,
+				6EFC2DC2279B36950057FB93 /* PersonFactory.swift in Sources */,
 				6E59E72D2799F3BE0016F13D /* UIView+UI.swift in Sources */,
 				6E59E74B279A00420016F13D /* ImageCacheType.swift in Sources */,
 				6E251FF5279A32E0005CB825 /* EpisodeCell.swift in Sources */,

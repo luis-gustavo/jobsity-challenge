@@ -16,8 +16,8 @@ final class EpisodeDetailViewController: UIViewController {
     private lazy var episodeDetailView: EpisodeDetailView = {
         let view = EpisodeDetailView(model: .init(season: episode.season,
                                                   number: episode.number,
-                                                  summary: episode.summary,
-                                                  poster: episode.image.original))
+                                                  summary: episode.summary ?? "",
+                                                  poster: episode.image?.original ?? ""))
         
         return view
     }()

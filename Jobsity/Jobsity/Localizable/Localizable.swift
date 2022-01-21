@@ -16,6 +16,8 @@ enum Localizable {
     case episodes
     case episode
     case favorites
+    case people
+    case search
     case unableToDecodeError
     case unableToEncodeError
     
@@ -29,6 +31,8 @@ enum Localizable {
             case .episodes: return "EPISODES".localize()
             case .episode: return "EPISODE".localize()
             case .favorites: return "FAVORITES".localize()
+            case .people: return "PEOPLE".localize()
+            case .search: return "SEARCH".localize()
             case .unableToEncodeError: return "UNABLE_TO_ENCODE".localize()
             case .unableToDecodeError: return "UNABLE_TO_DECODE".localize()
         }

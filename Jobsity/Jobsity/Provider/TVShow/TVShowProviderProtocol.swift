@@ -8,5 +8,7 @@
 import Networking
 
 protocol TVShowProviderProtocol {
-    func requestTVShows(_ completion: @escaping (Result<[TVShow], NetworkingError>) -> Void)
+    func requestTVShows(page: Int, _ completion: @escaping (Result<[TVShow], NetworkingError>) -> Void)
+    func requestTVShows(query: String, _ completion: @escaping (Result<[TVShow], NetworkingError>) -> Void)
+    func requestTVShows(personId: Int, _ completion: @escaping (Result<[TVShow], NetworkingError>) -> Void)
 }
