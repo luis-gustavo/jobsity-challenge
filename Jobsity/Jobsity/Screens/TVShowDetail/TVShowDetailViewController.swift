@@ -15,9 +15,11 @@ final class TVShowDetailViewController: UIViewController {
     
     // MARK: - Properties
     weak var delegate: TVShowDetailViewControllerDelegate?
-    private let provider: EpisodeProviderProtocol
+    private let episodeProvider: EpisodeProviderProtocol
+    private let favoritesProvider: FavoritesProviderProtocol
     private let tvShow: TVShow
     private var episodes = [Episode]()
+    private var isFavorite: Bool
     
     // MARK: - View Properties
     private lazy var tvShowDetailView: TVShowDetailView = {
@@ -27,9 +29,11 @@ final class TVShowDetailViewController: UIViewController {
     }()
     
     // MARK: - Init
-    init(tvShow: TVShow, provider: EpisodeProviderProtocol) {
+    init(tvShow: TVShow, episodeProvider: EpisodeProviderProtocol, favoritesProvider: FavoritesProviderProtocol, isFavorite: Bool) {
         self.tvShow = tvShow
-        self.provider = provider
+        self.episodeProvider = episodeProvider
+        self.favoritesProvider = favoritesProvider
+        self.isFavorite = isFavorite
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -46,6 +50,7 @@ final class TVShowDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = tvShow.name
+        setupFavoritesButton()
         requestEpisodes()
     }
 }
@@ -60,8 +65,33 @@ extension TVShowDetailViewController: TVShowDetailViewDelegate {
 
 // MARK: - Private methods
 private extension TVShowDetailViewController {
+    func setupFavoritesButton() {
+        let favoriteAction = UIAction { [weak self] action in
+            guard let self = self else { return }
+            do {
+                if self.isFavorite {
+                    _ = try self.favoritesProvider.removeFavoriteTVShow(self.tvShow)
+                    self.isFavorite = false
+                    self.navigationItem.rightBarButtonItem?.image = .init(systemName: "star")
+                } else {
+                    _ = try self.favoritesProvider.saveFavoriteTVShow(self.tvShow)
+                    self.isFavorite = true
+                    self.navigationItem.rightBarButtonItem?.image = .init(systemName: "star.fill")
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        let favoritesButton = UIBarButtonItem(title: nil,
+                                              image: .init(systemName: isFavorite ? "star.fill" : "star"),
+                                              primaryAction: favoriteAction,
+                                              menu: nil)
+        navigationItem.rightBarButtonItem = favoritesButton
+    }
+    
     func requestEpisodes() {
-        provider.requestEpisodes(tvShowId: tvShow.id) { [weak self] result in
+        episodeProvider.requestEpisodes(tvShowId: tvShow.id) { [weak self] result in
             switch result {
                 case let .success(episodes):
                     guard let self = self else { return }

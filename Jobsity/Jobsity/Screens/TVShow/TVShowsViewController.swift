@@ -8,15 +8,18 @@
 import UIKit
 
 protocol TVShowsViewControllerDelegate: AnyObject {
-    func didSelectTVShow(_ tvShow: TVShow)
+    func didSelectTVShow(_ sender: TVShowsViewController, tvShow: TVShow, isFavorite: Bool)
+    func didSelectFavorites()
 }
 
 final class TVShowsViewController: UIViewController {
 
     // MARK: - Properties
     weak var delegate: TVShowsViewControllerDelegate?
-    private let provider: TVShowProviderProtocol
+    private let tvShowProvider: TVShowProviderProtocol
+    private let favoritesProvider: FavoritesProviderProtocol
     private var tvShows = [TVShow]()
+    private var favoriteTVShows = [TVShow]()
     
     // MARK: - View Properties
     private lazy var tvShowsView: TVShowsView = {
@@ -26,8 +29,9 @@ final class TVShowsViewController: UIViewController {
     }()
     
     // MARK: - Init
-    init(provider: TVShowProviderProtocol) {
-        self.provider = provider
+    init(tvShowProvider: TVShowProviderProtocol, favoritesProvider: FavoritesProviderProtocol) {
+        self.tvShowProvider = tvShowProvider
+        self.favoritesProvider = favoritesProvider
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,7 +48,14 @@ final class TVShowsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = Localizable.tvShows.localized
+        setupFavoritesButton()
         requestTvShows()
+    }
+    
+    // MARK: - ViewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        requestFavorites()
     }
 }
 
@@ -52,30 +63,56 @@ final class TVShowsViewController: UIViewController {
 extension TVShowsViewController: TVShowsViewDelegate {
     func didSelectTVShow(with id: Int) {
         guard let tvShow = tvShows.first(where: { $0.id == id }) else { return }
-        self.delegate?.didSelectTVShow(tvShow)
+        self.delegate?.didSelectTVShow(self, tvShow: tvShow, isFavorite: self.favoriteTVShows.contains(where: { $0 == tvShow }))
+    }
+    
+    func didSelectFavorite(tvShowId: Int, shouldFavorite: Bool) {
+        guard let tvShow = tvShows.first(where: { $0.id == tvShowId }) else { return }
+        do {
+            if shouldFavorite {
+                self.favoriteTVShows = try self.favoritesProvider.saveFavoriteTVShow(tvShow)
+            } else {
+                self.favoriteTVShows = try self.favoritesProvider.removeFavoriteTVShow(tvShow)
+            }
+            self.tvShowsView.setupFavoriteTVShows(TVShowFactory.createViewModel(model: self.favoriteTVShows))
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 }
 
 // MARK: - Private methods
 private extension TVShowsViewController {
+    func setupFavoritesButton() {
+        let favoriteAction = UIAction { [weak self] action in
+            guard let self = self else { return }
+            self.delegate?.didSelectFavorites()
+        }
+        let favoritesButton = UIBarButtonItem(title: Localizable.favorites.localized,
+                                              image: nil,
+                                              primaryAction: favoriteAction,
+                                              menu: nil)
+        navigationItem.rightBarButtonItem = favoritesButton
+    }
+    
+    func requestFavorites() {
+        do {
+            self.favoriteTVShows = try favoritesProvider.retrieveFavoriteTvShows()
+            self.tvShowsView.setupFavoriteTVShows(TVShowFactory.createViewModel(model: self.favoriteTVShows))
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
     func requestTvShows() {
-        self.provider.requestTVShows { [weak self] result in
+        self.tvShowProvider.requestTVShows { [weak self] result in
             switch result {
                 case let .success(tvShows):
                     guard let self = self else { return }
                     self.tvShows = tvShows
-                    self.tvShowsView.setupTvShows(tvShows: TVShowsViewControllerFactory.createViewModel(model: tvShows))
+                    self.tvShowsView.setupTvShows(TVShowFactory.createViewModel(model: tvShows))
                 case let .failure(error): print(error.localizedDescription)
             }
         }
-    }
-}
-
-// MARK: - Factory
-fileprivate struct TVShowsViewControllerFactory {
-    static func createViewModel(model: [TVShow]) -> [TVShowsView.Model] {
-        return model.map({ .init(id: $0.id,
-                                 name: $0.name,
-                                 image: $0.image.medium) })
     }
 }

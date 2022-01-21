@@ -15,6 +15,9 @@ enum Localizable {
     case season
     case episodes
     case episode
+    case favorites
+    case unableToDecodeError
+    case unableToEncodeError
     
     var localized: String {
         switch self {
@@ -25,6 +28,9 @@ enum Localizable {
             case .season: return "SEASON".localize()
             case .episodes: return "EPISODES".localize()
             case .episode: return "EPISODE".localize()
+            case .favorites: return "FAVORITES".localize()
+            case .unableToEncodeError: return "UNABLE_TO_ENCODE".localize()
+            case .unableToDecodeError: return "UNABLE_TO_DECODE".localize()
         }
     }
 }

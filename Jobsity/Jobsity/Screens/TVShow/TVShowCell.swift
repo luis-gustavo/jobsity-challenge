@@ -7,9 +7,17 @@
 
 import UIKit
 
+protocol TVShowCellDelegate: AnyObject {
+    func didSelectFavorite(_ sender: TVShowCell, row: Int, shouldFavorite: Bool)
+}
+
 final class TVShowCell: UITableViewCell {
     
     // MARK: - View Properties
+    weak var delegate: TVShowCellDelegate?
+    private let starUnfilledName = "star"
+    private let starFilledName = "star.fill"
+    
     private let tvShowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.cornerRadius = 20
@@ -21,6 +29,14 @@ final class TVShowCell: UITableViewCell {
         label.font = .systemFont(ofSize: 18, weight: .regular)
         label.textColor = .black
         return label
+    }()
+    
+    private lazy var starButton: UIButton = {
+        let starButton = UIButton()
+        starButton.setImage(.init(systemName: starUnfilledName), for: .normal)
+        starButton.addTarget(self, action: #selector(didTouchFavorite), for: .touchUpInside)
+        starButton.isSelected = false
+        return starButton
     }()
     
     // MARK: - Inits
@@ -38,7 +54,7 @@ final class TVShowCell: UITableViewCell {
 // MARK: - CodableView extension
 extension TVShowCell: ViewCodable {
     func buildViewHierarchy() {
-        contentView.addSubviews([tvShowImageView, tvShowNameLabel])
+        contentView.addSubviews([tvShowImageView, tvShowNameLabel, starButton])
     }
     
     func setupConstraints() {
@@ -55,6 +71,13 @@ extension TVShowCell: ViewCodable {
             [
                 view.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                 view.leadingAnchor.constraint(equalTo: tvShowImageView.trailingAnchor, constant: 8),
+                view.trailingAnchor.constraint(equalTo: starButton.leadingAnchor, constant: -8)
+            ]
+        }
+        
+        starButton.setupConstraints { view in
+            [
+                view.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                 view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
             ]
         }
@@ -65,8 +88,18 @@ extension TVShowCell: ViewCodable {
 
 // MARK: - Internal methods
 extension TVShowCell {
-    func configureWith(name: String, image: String) {
+    func configureWith(name: String, image: String, isFavorite: Bool) {
         self.tvShowNameLabel.text = name
         self.tvShowImageView.downloaded(from: image)
+        self.starButton.setImage(.init(systemName: isFavorite ? starFilledName : starUnfilledName), for: .normal)
+        self.starButton.isSelected = isFavorite
+    }
+}
+
+// MARK: - Targets extension
+private extension TVShowCell {
+    @objc
+    func didTouchFavorite() {
+        self.delegate?.didSelectFavorite(self, row: tag, shouldFavorite: !starButton.isSelected)
     }
 }

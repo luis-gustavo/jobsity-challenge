@@ -12,3 +12,6 @@
 "SEASON" = "Season";
 "EPISODES" = "Episodes";
 "EPISODE" = "Episode";
+"UNABLE_TO_ENCODE" = "Unable to encode object into data";
+"UNABLE_TO_DECODE" = "Unable to decode object into data";
+"FAVORITES" = "Favorites";

@@ -9,20 +9,15 @@ import UIKit
 
 protocol TVShowsViewDelegate: AnyObject {
     func didSelectTVShow(with id: Int)
+    func didSelectFavorite(tvShowId: Int, shouldFavorite: Bool)
 }
 
 final class TVShowsView: UIView {
     
-    // MARK: - Model
-    struct Model {
-        let id: Int
-        let name: String
-        let image: String
-    }
-    
     // MARK: - Properties
     weak var delegate: TVShowsViewDelegate?
-    private var model = [Model]()
+    private var model = [TVShowViewModel]()
+    private var favoriteTVShows = [TVShowViewModel]()
     
     // MARK: - View Properties
 //    private lazy var searchBar: UISearchBar = {
@@ -84,12 +79,27 @@ extension TVShowsView: ViewCodable {
 
 // MARK: - Internal methods
 extension TVShowsView {
-    func setupTvShows(tvShows: [Model]) {
+    func setupTvShows(_ tvShows: [TVShowViewModel]) {
         self.model = tvShows
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.tableView.reloadData()
         }
+    }
+    
+    func setupFavoriteTVShows(_ tvShows: [TVShowViewModel]) {
+        self.favoriteTVShows = tvShows
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - Private methods
+private extension TVShowsView {
+    func tvShowIsFavorite(_ tvShow: TVShowViewModel) -> Bool {
+        return self.favoriteTVShows.contains(where: { $0.id == tvShow.id })
     }
 }
 
@@ -114,8 +124,10 @@ extension TVShowsView: UITableViewDataSource {
         
         let tvShow = model[indexPath.row]
         
-        cell.configureWith(name: tvShow.name, image: tvShow.image)
+        cell.configureWith(name: tvShow.name, image: tvShow.image, isFavorite: tvShowIsFavorite(tvShow))
         cell.backgroundColor = indexPath.row.isMultiple(of: 2) ? .white : .ultraLightGray
+        cell.delegate = self
+        cell.tag = indexPath.row
         
         return cell
     }
@@ -135,5 +147,13 @@ extension TVShowsView: UISearchBarDelegate {
         searchBar.text = nil
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.endEditing(true)
+    }
+}
+
+// MARK: - TVShowCellDelegate
+extension TVShowsView: TVShowCellDelegate {
+    func didSelectFavorite(_ sender: TVShowCell, row: Int, shouldFavorite: Bool) {
+        let tvShowId = self.model[row].id
+        self.delegate?.didSelectFavorite(tvShowId: tvShowId, shouldFavorite: shouldFavorite)
     }
 }

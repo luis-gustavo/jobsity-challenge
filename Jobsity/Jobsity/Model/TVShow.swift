@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TVShow: Codable {
+struct TVShow: Codable, Equatable {
     let id: Int
     let name: String
     let image: Image
@@ -18,5 +18,9 @@ struct TVShow: Codable {
     struct Schedule: Codable {
         let time: String
         let days: [String]
+    }
+    
+    static func == (lhs: TVShow, rhs: TVShow) -> Bool {
+        return lhs.id == rhs.id
     }
 }
