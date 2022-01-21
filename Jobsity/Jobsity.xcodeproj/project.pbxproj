@@ -41,6 +41,8 @@
 		6E59E751279A01A00016F13D /* UIImageView+Downloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59E750279A01A00016F13D /* UIImageView+Downloaded.swift */; };
 		6E59E754279A04A30016F13D /* UIColor+StaticColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59E753279A04A30016F13D /* UIColor+StaticColors.swift */; };
 		6EDA00C2279AC1A100F2500C /* NSMutableAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA00C1279AC1A100F2500C /* NSMutableAttributedString+Extension.swift */; };
+		6EDA00C6279ACEC500F2500C /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA00C5279ACEC500F2500C /* EpisodeDetailViewController.swift */; };
+		6EDA00C8279ACECC00F2500C /* EpisodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA00C7279ACECC00F2500C /* EpisodeDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		6E59E750279A01A00016F13D /* UIImageView+Downloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Downloaded.swift"; sourceTree = "<group>"; };
 		6E59E753279A04A30016F13D /* UIColor+StaticColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+StaticColors.swift"; sourceTree = "<group>"; };
 		6EDA00C1279AC1A100F2500C /* NSMutableAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extension.swift"; sourceTree = "<group>"; };
+		6EDA00C5279ACEC500F2500C /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
+		6EDA00C7279ACECC00F2500C /* EpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +243,7 @@
 		6E59E7362799F4CE0016F13D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				6EDA00C4279ACE8700F2500C /* EpisodeDetail */,
 				6E251FEF279A3105005CB825 /* TVShowDetail */,
 				6E59E73C2799F4EA0016F13D /* TVShow */,
 			);
@@ -273,6 +278,15 @@
 				6E59E74C279A00670016F13D /* ImageCache.swift */,
 			);
 			path = ImageCache;
+			sourceTree = "<group>";
+		};
+		6EDA00C4279ACE8700F2500C /* EpisodeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6EDA00C5279ACEC500F2500C /* EpisodeDetailViewController.swift */,
+				6EDA00C7279ACECC00F2500C /* EpisodeDetailView.swift */,
+			);
+			path = EpisodeDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,6 +381,7 @@
 				6E59E6CF2799D1830016F13D /* AppDelegate.swift in Sources */,
 				6E59E7352799F4090016F13D /* AppCoordinator.swift in Sources */,
 				6E59E72E2799F3BE0016F13D /* UITableViewCell+identifier.swift in Sources */,
+				6EDA00C6279ACEC500F2500C /* EpisodeDetailViewController.swift in Sources */,
 				6E59E7202799F0A00016F13D /* APIKeys.swift in Sources */,
 				6EDA00C2279AC1A100F2500C /* NSMutableAttributedString+Extension.swift in Sources */,
 				6E59E73E2799F4FF0016F13D /* TVShowsViewController.swift in Sources */,
@@ -391,6 +406,7 @@
 				6E59E72D2799F3BE0016F13D /* UIView+UI.swift in Sources */,
 				6E59E74B279A00420016F13D /* ImageCacheType.swift in Sources */,
 				6E251FF5279A32E0005CB825 /* EpisodeCell.swift in Sources */,
+				6EDA00C8279ACECC00F2500C /* EpisodeDetailView.swift in Sources */,
 				6E251FF1279A3116005CB825 /* TVShowDetailViewController.swift in Sources */,
 				6E251FEC279A2D90005CB825 /* Image.swift in Sources */,
 			);

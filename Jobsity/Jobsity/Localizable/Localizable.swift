@@ -14,6 +14,7 @@ enum Localizable {
     case summary
     case season
     case episodes
+    case episode
     
     var localized: String {
         switch self {
@@ -23,6 +24,7 @@ enum Localizable {
             case .summary: return "SUMMARY".localize()
             case .season: return "SEASON".localize()
             case .episodes: return "EPISODES".localize()
+            case .episode: return "EPISODE".localize()
         }
     }
 }

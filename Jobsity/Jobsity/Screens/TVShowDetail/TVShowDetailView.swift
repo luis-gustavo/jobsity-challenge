@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TVShowDetailViewDelegate: AnyObject {
+    func didSelectEpisode(with id: Int)
+}
+
 final class TVShowDetailView: UIView {
     
     // MARK: - Model
@@ -28,6 +32,7 @@ final class TVShowDetailView: UIView {
     }
     
     // MARK: - Properties
+    weak var delegate: TVShowDetailViewDelegate?
     private let model: Model
     private var episodes = [Episode]()
     
@@ -37,15 +42,10 @@ final class TVShowDetailView: UIView {
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false
         view.isScrollEnabled = true
-        view.isUserInteractionEnabled = true
         return view
     }()
     
-    private let containerView: UIView = {
-        let view = UIView()
-        view.isUserInteractionEnabled = true
-        return view
-    }()
+    private let containerView = UIView()
     
     private lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()
@@ -82,7 +82,8 @@ final class TVShowDetailView: UIView {
         label.textColor = .black
         label.numberOfLines = 0
         label.attributedText = NSMutableAttributedString()
-            .bold("\(Localizable.summary.localized): ").normal("\(model.summary)")
+            .bold("\(Localizable.summary.localized): ")
+            .normal("\(model.summary)")
         return label
     }()
     
@@ -92,11 +93,6 @@ final class TVShowDetailView: UIView {
         stackView.cornerRadius = 8
         stackView.spacing = 4
         stackView.backgroundColor = .white
-//        stackView.layer.shadowOffset = .init(width: 0, height: 3)
-//        stackView.layer.shadowRadius = 4
-//        stackView.layer.masksToBounds = false
-//        stackView.layer.shadowColor = UIColor.gray.cgColor
-//        stackView.layer.shadowOpacity = 1
         return stackView
     }()
     
@@ -212,7 +208,13 @@ extension TVShowDetailView {
 // MARK: - UITableViewDelegate
 extension TVShowDetailView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "SEASON \(section + 1)"
+        return "\(Localizable.season.localized) \(section + 1)"
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episodesOfSection = episodes.filter({ ($0.season - 1) == indexPath.section })
+        let episode = episodesOfSection[indexPath.row]
+        self.delegate?.didSelectEpisode(with: episode.id)
     }
 }
 

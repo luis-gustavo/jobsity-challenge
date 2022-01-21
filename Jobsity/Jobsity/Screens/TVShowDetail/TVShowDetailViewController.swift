@@ -7,15 +7,22 @@
 
 import UIKit
 
+protocol TVShowDetailViewControllerDelegate: AnyObject {
+    func didSelectEpisode(_ episode: Episode)
+}
+
 final class TVShowDetailViewController: UIViewController {
     
     // MARK: - Properties
+    weak var delegate: TVShowDetailViewControllerDelegate?
     private let provider: EpisodeProviderProtocol
     private let tvShow: TVShow
+    private var episodes = [Episode]()
     
     // MARK: - View Properties
     private lazy var tvShowDetailView: TVShowDetailView = {
         let view = TVShowDetailView(model: TVShowDetailViewControllerFactory.createViewModel(model: tvShow))
+        view.delegate = self
         return view
     }()
     
@@ -43,6 +50,14 @@ final class TVShowDetailViewController: UIViewController {
     }
 }
 
+// MARK: - TVShowDetailViewDelegate
+extension TVShowDetailViewController: TVShowDetailViewDelegate {
+    func didSelectEpisode(with id: Int) {
+        guard let episode = episodes.first(where: { $0.id == id }) else { return }
+        self.delegate?.didSelectEpisode(episode)
+    }
+}
+
 // MARK: - Private methods
 private extension TVShowDetailViewController {
     func requestEpisodes() {
@@ -50,6 +65,7 @@ private extension TVShowDetailViewController {
             switch result {
                 case let .success(episodes):
                     guard let self = self else { return }
+                    self.episodes = episodes
                     self.tvShowDetailView.setupEpisodes(TVShowDetailViewControllerFactory.createViewEpisodes(episodes: episodes))
                 case let .failure(error): print(error.localizedDescription)
             }

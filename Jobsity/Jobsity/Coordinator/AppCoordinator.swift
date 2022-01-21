@@ -30,6 +30,15 @@ final class AppCoordinator: Coordinatable {
 extension AppCoordinator: TVShowsViewControllerDelegate {
     func didSelectTVShow(_ tvShow: TVShow) {
         let viewController = TVShowDetailViewController(tvShow: tvShow, provider: EpisodeProvider(networking: URLSessionNetworking()))
+        viewController.delegate = self
+        self.navigationController.pushViewController(viewController, animated: true)
+    }
+}
+
+// MARK: - TVShowDetailViewControllerDelegate
+extension AppCoordinator: TVShowDetailViewControllerDelegate {
+    func didSelectEpisode(_ episode: Episode) {
+        let viewController = EpisodeDetailViewController(episode: episode)
         self.navigationController.pushViewController(viewController, animated: true)
     }
 }
