@@ -7,11 +7,23 @@
 
 import UIKit
 
+protocol TVShowsViewControllerDelegate: AnyObject {
+    func didSelectTVShow(_ tvShow: TVShow)
+}
+
 final class TVShowsViewController: UIViewController {
+
+    // MARK: - Properties
+    weak var delegate: TVShowsViewControllerDelegate?
+    private let provider: TVShowProviderProtocol
+    private var tvShows = [TVShow]()
     
     // MARK: - View Properties
-    private let tvShowsView = TVShowsView()
-    private let provider: TVShowProviderProtocol
+    private lazy var tvShowsView: TVShowsView = {
+        let view = TVShowsView()
+        view.delegate = self
+        return view
+    }()
     
     // MARK: - Init
     init(provider: TVShowProviderProtocol) {
@@ -36,6 +48,14 @@ final class TVShowsViewController: UIViewController {
     }
 }
 
+// MARK: - TVShowsViewDelegate
+extension TVShowsViewController: TVShowsViewDelegate {
+    func didSelectTVShow(with id: Int) {
+        guard let tvShow = tvShows.first(where: { $0.id == id }) else { return }
+        self.delegate?.didSelectTVShow(tvShow)
+    }
+}
+
 // MARK: - Private methods
 private extension TVShowsViewController {
     func requestTvShows() {
@@ -43,6 +63,7 @@ private extension TVShowsViewController {
             switch result {
                 case let .success(tvShows):
                     guard let self = self else { return }
+                    self.tvShows = tvShows
                     self.tvShowsView.setupTvShows(tvShows: TVShowsViewControllerFactory.createViewModel(model: tvShows))
                 case let .failure(error): print(error.localizedDescription)
             }
@@ -53,6 +74,8 @@ private extension TVShowsViewController {
 // MARK: - Factory
 fileprivate struct TVShowsViewControllerFactory {
     static func createViewModel(model: [TVShow]) -> [TVShowsView.Model] {
-        return model.map({ .init(id: $0.id, name: $0.name, image: $0.image.medium) })
+        return model.map({ .init(id: $0.id,
+                                 name: $0.name,
+                                 image: $0.image.medium) })
     }
 }

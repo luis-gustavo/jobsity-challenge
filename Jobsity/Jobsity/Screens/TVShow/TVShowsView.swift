@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TVShowsViewDelegate: AnyObject {
+    func didSelectTVShow(with id: Int)
+}
+
 final class TVShowsView: UIView {
     
     // MARK: - Model
@@ -17,6 +21,7 @@ final class TVShowsView: UIView {
     }
     
     // MARK: - Properties
+    weak var delegate: TVShowsViewDelegate?
     private var model = [Model]()
     
     // MARK: - View Properties
@@ -89,7 +94,12 @@ extension TVShowsView {
 }
 
 // MARK: - UITableViewDelegate
-extension TVShowsView: UITableViewDelegate { }
+extension TVShowsView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tvShow = model[indexPath.row]
+        self.delegate?.didSelectTVShow(with: tvShow.id)
+    }
+}
 
 // MARK: - UITableViewDelegate
 extension TVShowsView: UITableViewDataSource {

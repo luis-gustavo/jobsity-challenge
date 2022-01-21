@@ -11,9 +11,12 @@ struct TVShow: Codable {
     let id: Int
     let name: String
     let image: Image
+    let genres: [String]
+    let summary: String
+    let schedule: Schedule
     
-    struct Image: Codable {
-        let medium: String
-        let original: String
+    struct Schedule: Codable {
+        let time: String
+        let days: [String]
     }
 }

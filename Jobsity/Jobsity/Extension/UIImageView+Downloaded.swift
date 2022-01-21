@@ -27,7 +27,7 @@ extension UIImageView {
                 let image = UIImage(data: data)
                 else { return }
             cache[url] = image
-            DispatchQueue.main.async() { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 self?.image = image
             }
         }.resume()

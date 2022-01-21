@@ -9,10 +9,20 @@ import Foundation
 
 enum Localizable {
     case tvShows
+    case genres
+    case schedule
+    case summary
+    case season
+    case episodes
     
     var localized: String {
         switch self {
             case .tvShows: return "TV_SHOWS".localize()
+            case .genres: return "GENRES".localize()
+            case .schedule: return "SCHEDULE".localize()
+            case .summary: return "SUMMARY".localize()
+            case .season: return "SEASON".localize()
+            case .episodes: return "EPISODES".localize()
         }
     }
 }

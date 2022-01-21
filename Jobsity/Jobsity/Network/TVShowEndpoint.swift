@@ -10,11 +10,15 @@ import Networking
 enum TVShowEndpoint: EndPoint {
     
     case tvShows
+    case episodes(id: Int)
     
     var url: URL {
         switch self {
             case .tvShows:
                 guard let url = URL(string: "\(APIKeys.baseUrl)/shows") else { preconditionFailure("The url must exist") }
+                return url
+            case let .episodes(id: id):
+                guard let url = URL(string: "\(APIKeys.baseUrl)/shows/\(id)/episodes") else { preconditionFailure("The url must exist") }
                 return url
         }
     }
