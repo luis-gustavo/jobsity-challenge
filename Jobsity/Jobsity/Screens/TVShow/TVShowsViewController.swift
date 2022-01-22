@@ -11,6 +11,7 @@ protocol TVShowsViewControllerDelegate: AnyObject {
     func didSelectTVShow(_ sender: TVShowsViewController, tvShow: TVShow, isFavorite: Bool)
     func didSelectPerson(_ sender: TVShowsViewController, person: Person)
     func didSelectFavorites()
+    func didSelectAuthentication()
 }
 
 final class TVShowsViewController: UIViewController {
@@ -80,6 +81,7 @@ final class TVShowsViewController: UIViewController {
         title = Localizable.tvShows.localized
         navigationItem.searchController = searchController
         setupFavoritesButton()
+        setupAuthenticationButton()
         requestTvShows(page: 0)
     }
     
@@ -134,6 +136,18 @@ private extension TVShowsViewController {
                                               primaryAction: favoriteAction,
                                               menu: nil)
         navigationItem.rightBarButtonItem = favoritesButton
+    }
+    
+    func setupAuthenticationButton() {
+        let authAction = UIAction { [weak self] action in
+            guard let self = self else { return }
+            self.delegate?.didSelectAuthentication()
+        }
+        let authButton = UIBarButtonItem(title: Localizable.authentication.localized,
+                                         image: nil,
+                                         primaryAction: authAction,
+                                         menu: nil)
+        navigationItem.leftBarButtonItem = authButton
     }
     
     func requestFavorites() {

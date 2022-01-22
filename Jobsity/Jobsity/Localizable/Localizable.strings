@@ -17,3 +17,6 @@
 "FAVORITES" = "Favorites";
 "SEARCH" = "Search";
 "PEOPLE" = "People";
+"AUTHENTICATION" = "Authentication";
+"IS_AUTHENTICATION_ENABLED" = "Is Authentication Enabled";
+"REOPEN_APP_TRY_AGAIN" = "Please, reopen the app and try again";

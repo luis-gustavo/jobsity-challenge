@@ -11,25 +11,39 @@ import UIKit
 final class AppCoordinator: Coordinatable {
     
     // MARK: - Properties
+    private let shouldAuthenticate: Bool
     private let navigationController: UINavigationController
     
     // MARK: - Init
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, shouldAuthenticate: Bool) {
         self.navigationController = navigationController
+        self.shouldAuthenticate = shouldAuthenticate
     }
     
     // MARK: - Start
     func start() {
-        let viewController = TVShowsViewController(tvShowProvider: TVShowProvider(networking: URLSessionNetworking.shared),
-                                                   favoritesProvider: FavoritesProvider.shared,
-                                                   peopleProvider: PeopleProvider(networking: URLSessionNetworking.shared))
-        viewController.delegate = self
-        self.navigationController.pushViewController(viewController, animated: true)
+        if shouldAuthenticate {
+            let viewController = LocalAuthViewController()
+            viewController.modalPresentationStyle = .overFullScreen
+            viewController.delegate = self
+            self.navigationController.present(viewController, animated: true, completion: nil)
+        } else {
+            let viewController = TVShowsViewController(tvShowProvider: TVShowProvider(networking: URLSessionNetworking.shared),
+                                                       favoritesProvider: FavoritesProvider.shared,
+                                                       peopleProvider: PeopleProvider(networking: URLSessionNetworking.shared))
+            viewController.delegate = self
+            self.navigationController.pushViewController(viewController, animated: true)
+        }
     }
 }
 
 // MARK: - TVShowsViewControllerDelegate
 extension AppCoordinator: TVShowsViewControllerDelegate {
+    func didSelectAuthentication() {
+        let viewController = SetupAuthViewController(localAuthProvider: LocalAuthProvider.shared)
+        self.navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func didSelectPerson(_ sender: TVShowsViewController, person: Person) {
         let viewController = PersonDetailViewController(person: person,
                                                         tvShowProvider: TVShowProvider(networking: URLSessionNetworking.shared),
@@ -83,5 +97,22 @@ extension AppCoordinator: PersonDetailViewControllerDelegate {
                                                         isFavorite: isFavorite)
         viewController.delegate = self
         self.navigationController.pushViewController(viewController, animated: true)
+    }
+}
+
+// MARK: - LocalAuthViewControllerDelegate
+extension AppCoordinator: LocalAuthViewControllerDelegate {
+    func didAuthenticate() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.navigationController.dismiss(animated: false) { [weak self] in
+                guard let self = self else { return }
+                let viewController = TVShowsViewController(tvShowProvider: TVShowProvider(networking: URLSessionNetworking.shared),
+                                                           favoritesProvider: FavoritesProvider.shared,
+                                                           peopleProvider: PeopleProvider(networking: URLSessionNetworking.shared))
+                viewController.delegate = self
+                self.navigationController.pushViewController(viewController, animated: true)
+            }
+        }
     }
 }

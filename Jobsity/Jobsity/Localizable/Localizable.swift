@@ -18,6 +18,9 @@ enum Localizable {
     case favorites
     case people
     case search
+    case authentication
+    case isAuthenticationEnabled
+    case reopenAndTryAgain
     case unableToDecodeError
     case unableToEncodeError
     
@@ -33,6 +36,9 @@ enum Localizable {
             case .favorites: return "FAVORITES".localize()
             case .people: return "PEOPLE".localize()
             case .search: return "SEARCH".localize()
+            case .authentication: return "AUTHENTICATION".localize()
+            case .isAuthenticationEnabled: return "IS_AUTHENTICATION_ENABLED".localize()
+            case .reopenAndTryAgain: return "REOPEN_APP_TRY_AGAIN".localize()
             case .unableToEncodeError: return "UNABLE_TO_ENCODE".localize()
             case .unableToDecodeError: return "UNABLE_TO_DECODE".localize()
         }
