@@ -13,6 +13,7 @@ final class URL_withQueryParametersTests: XCTestCase {
     // MARK: - Properties
     private let sampleURL = URL(string: "https://google.com")!
 
+    // MARK: - Tests
     func testURLHasCorrectQueryParameters() throws {
         let expectedResult = "https://google.com?test=1"
         let queryParameters: [String: Any] = ["test": 1]

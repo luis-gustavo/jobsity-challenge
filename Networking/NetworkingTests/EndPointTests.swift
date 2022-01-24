@@ -10,8 +10,7 @@ import XCTest
 
 final class EndPointTests: XCTestCase {
     
-    // MARK: - Properties
-    
+    // MARK: - Tests
     func testCreateRequestCorrectly() throws {
         let expectedUrl = "https://google.com?test=1"
         let expectedMethod = "GET"

@@ -191,6 +191,6 @@ extension PersonDetailView: TVShowCellDelegate {
 // MARK: - Private methods
 private extension PersonDetailView {
     func tvShowIsFavorite(_ tvShow: TVShowViewModel) -> Bool {
-        return self.favoriteTVShows.contains(where: { $0.id == tvShow.id })
+        return self.favoriteTVShows.contains(where: { $0 == tvShow })
     }
 }

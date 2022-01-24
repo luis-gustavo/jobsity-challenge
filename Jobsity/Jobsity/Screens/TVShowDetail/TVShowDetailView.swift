@@ -221,7 +221,7 @@ extension TVShowDetailView: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension TVShowDetailView: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return (episodes.map({ $0.season }).sorted(by: { $0 > $1 }).first ?? 1) - 1
+        return (episodes.map({ $0.season }).sorted(by: { $0 > $1 }).first ?? 2)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
